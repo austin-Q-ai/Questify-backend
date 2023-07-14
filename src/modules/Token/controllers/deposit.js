@@ -51,7 +51,7 @@ export const depositController = async (req, res, next) => {
 
     if (existingUser) {
       existingUser.totalBalance =
-        Math.floor((existingUser.totalBalance + amount) * 1000) / 1000;
+        Math.floor((existingUser.totalBalance + req.body.amount) * 1000) / 1000;
       existingUser.achievedQuests.questify[2] = 1;
 
       if (existingUser.achievedQuests.questify[3] < 5)
@@ -59,6 +59,7 @@ export const depositController = async (req, res, next) => {
 
       await existingUser.save();
       req.body.valid = true;
+      req.body.user = existingUser;
       console.log("Valid Transaction Hash!");
       next();
     } else {

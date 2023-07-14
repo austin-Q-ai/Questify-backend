@@ -7,7 +7,6 @@ export const claimQuestController = async (req, res) => {
 
   try {
     const existingUser = await UserModel.findOne({ wallet });
-    console.log(existingUser);
     const maxQuests = [1, 7, 1, 5];
 
     if (
@@ -33,7 +32,7 @@ export const claimQuestController = async (req, res) => {
           break;
       }
 
-      existingUser.claimedQuests[index] = 1;
+      existingUser.claimedQuests.questify[index] = 1;
       await existingUser.save();
 
       return successResponse({
