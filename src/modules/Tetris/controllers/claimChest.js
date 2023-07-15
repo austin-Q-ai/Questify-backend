@@ -6,13 +6,15 @@ export const claimChestController = async (req, res) => {
 
   try {
     const existingUser = await UserModel.findOne({ wallet });
-    console.log(existingUser);
 
     if (existingUser && existingUser.playCount.tetris === 4) {
       const boost = Math.floor(Math.random() * 10 + 1) / 100;
       existingUser.playCount.tetris = 0;
       existingUser.totalBalance += boost;
       await existingUser.save();
+
+      delete existingUser.loginHistory;
+
       return successResponse({
         res,
         response: { boost, existingUser },

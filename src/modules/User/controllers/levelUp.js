@@ -7,7 +7,6 @@ export const levelUpController = async (req, res) => {
 
   try {
     const existingUser = await UserModel.findOne({ wallet });
-    console.log(existingUser);
 
     if (existingUser) {
       let level =
@@ -23,6 +22,8 @@ export const levelUpController = async (req, res) => {
       existingUser.totalBalance += reward;
 
       await existingUser.save();
+
+      delete existingUser.loginHistory;
 
       return successResponse({
         res,

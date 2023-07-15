@@ -30,6 +30,7 @@ import { daoModule } from "./modules/DAO";
 import NodeCache from "node-cache";
 import { testModule } from "./modules/Test";
 import { tetrisModule } from "./modules/Tetris";
+import { zealyModule } from "./modules/Zealy";
 import { tokenModule } from "./modules/Token";
 
 // import { nftCollectionModule } from "./modules/NFTCollections";
@@ -134,6 +135,7 @@ class Server {
     this.express.use("/api/auth", authModule);
     this.express.use("/api/daos", daoModule);
     this.express.use("/api/games", gameModule);
+    this.express.use("/api/zealy", zealyModule);
   }
   initPrivateRoutes() {
     // put here the private routes

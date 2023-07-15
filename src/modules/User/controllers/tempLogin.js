@@ -59,6 +59,8 @@ export const tempLoginController = async (req, res) => {
 
     await existingUser.save();
 
+    delete existingUser.loginHistory;
+
     return successResponse({
       res,
       response: { data: existingUser },

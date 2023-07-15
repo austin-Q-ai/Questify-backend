@@ -52,6 +52,8 @@ export const withdrawController = async (req, res, next) => {
       Math.floor((existingUser.totalBalance - amount) * 1000) / 1000;
     await existingUser.save();
 
+    delete existingUser.loginHistory;
+
     next();
   } catch (err) {
     console.log(err);
