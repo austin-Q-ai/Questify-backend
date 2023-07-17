@@ -9,10 +9,11 @@ export const levelUpController = async (req, res) => {
     const existingUser = await UserModel.findOne({ wallet });
 
     if (existingUser) {
-      let level =
-        existingUser.totalXP < 500
-          ? 1
-          : Math.floor(Math.log2(existingUser.totalXP / 500)) + 2;
+      // let level =
+      //   existingUser.totalXP < 500
+      //     ? 1
+      //     : Math.floor(Math.log2(existingUser.totalXP / 500)) + 2;
+      let level = Math.floor(existingUser.totalXP / 500) + 1;
 
       level = level > 5 ? 5 : level;
 
