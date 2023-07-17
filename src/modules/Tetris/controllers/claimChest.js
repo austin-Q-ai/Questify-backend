@@ -13,8 +13,6 @@ export const claimChestController = async (req, res) => {
       existingUser.totalBalance += boost;
       await existingUser.save();
 
-      delete existingUser.loginHistory;
-
       return successResponse({
         res,
         response: { boost, existingUser },

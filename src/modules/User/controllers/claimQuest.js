@@ -35,8 +35,6 @@ export const claimQuestController = async (req, res) => {
       existingUser.claimedQuests.questify[index] = 1;
       await existingUser.save();
 
-      delete existingUser.loginHistory;
-
       return successResponse({
         res,
         response: { existingUser },

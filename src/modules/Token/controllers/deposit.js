@@ -59,8 +59,6 @@ export const depositController = async (req, res, next) => {
 
       await existingUser.save();
 
-      delete existingUser.loginHistory;
-
       req.body.valid = true;
       req.body.user = existingUser;
       console.log("Valid Transaction Hash!");

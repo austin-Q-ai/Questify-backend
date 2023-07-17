@@ -23,8 +23,6 @@ export const levelUpController = async (req, res) => {
 
       await existingUser.save();
 
-      delete existingUser.loginHistory;
-
       return successResponse({
         res,
         response: { existingUser },
