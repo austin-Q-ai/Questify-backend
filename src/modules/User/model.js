@@ -11,6 +11,7 @@ const userSchema = new Schema(
     level: { type: Number, required: true, default: 1 },
     achievedQuests: {
       questify: { type: Array, required: true, default: [0, 0, 0, 0] },
+      community: { type: Array, required: true, default: [0, 0, 0, 0] },
       tetris: {
         type: Array,
         required: true,
@@ -19,6 +20,7 @@ const userSchema = new Schema(
     },
     claimedQuests: {
       questify: { type: Array, required: true, default: [0, 0, 0, 0] },
+      community: { type: Array, required: true, default: [0, 0, 0, 0] },
       tetris: {
         type: Array,
         required: true,
