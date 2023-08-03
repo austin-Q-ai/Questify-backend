@@ -30,7 +30,8 @@ const userSchema = new Schema(
     playCount: {
       tetris: { type: Number, required: true, default: 0 },
     },
-    loginHistory: [{ type: Date, required: true, default: Date.now }],
+    lastActivityDate: Date,
+    lastTetrisDate: Date,
 
     // lastScore: { type: Number, require: true, default: 0 },
     // tetris: {

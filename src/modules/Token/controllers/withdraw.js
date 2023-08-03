@@ -35,7 +35,7 @@ export const withdrawController = async (req, res, next) => {
       amount: Math.floor(amount * 1e6).toString(),
       denom: "usei",
     };
-    const fee = calculateFee(150000, "0.1usei");
+    const fee = calculateFee(1500000, "0.1usei");
 
     const result = await client.sendTokens(
       firstAccount.address,
