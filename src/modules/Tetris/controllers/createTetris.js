@@ -11,6 +11,7 @@ export const createTetrisController = async (req, res) => {
     const user = await UserModel.findOne({ wallet });
 
     if (user) {
+      user.achievedQuests.tetris[0]=1;
       const today = new Date().setHours(0, 0, 0, 0);
       const lastTetrisDate = user.lastTetrisDate;
       
