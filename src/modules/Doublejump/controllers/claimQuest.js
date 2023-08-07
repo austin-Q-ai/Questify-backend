@@ -1,39 +1,48 @@
 import { errorResponse, successResponse } from "../../../utils";
-import UserModel from "../model";
+import UserModel from "../../User/model";
 
 export const claimQuestController = async (req, res) => {
-  
   let { wallet, index } = req.body;
+  index -= 4;
   console.log(wallet, index);
 
   try {
     const existingUser = await UserModel.findOne({ wallet });
-    const maxQuests = [1, 7, 1, 5];
+    const maxQuests = [1, 7, 10, 1, 1, 1, 1];
 
     if (
       existingUser &&
-      existingUser.achievedQuests.questify[index-4] === maxQuests[index-4] &&
-      existingUser.claimedQuests.questify[index-4] === 0
+      existingUser.achievedQuests.tetris[index] === maxQuests[index] &&
+      existingUser.claimedQuests.tetris[index] === 0
     ) {
-      switch (index-4) {
+      switch (index) {
         case 0:
-          existingUser.totalXP += 50;
+          existingUser.totalXP += 20;
           break;
         case 1:
-          existingUser.totalXP += 300;
+          existingUser.totalXP += 100;
           break;
         case 2:
-          existingUser.totalXP += 50;
+          existingUser.totalXP += 100;
           break;
         case 3:
-          existingUser.totalXP += 200;
+          existingUser.totalXP += 50;
+          break;
+        case 4:
+          existingUser.totalXP += 50;
+          break;
+        case 5:
+          existingUser.totalXP += 50;
+          break;
+        case 6:
+          existingUser.totalXP += 50;
           break;
         default:
           console.log("error in index");
           break;
       }
 
-      existingUser.claimedQuests.questify[index-4] = 1;
+      existingUser.claimedQuests.tetris[index] = 1;
       await existingUser.save();
 
       return successResponse({
