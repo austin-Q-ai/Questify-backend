@@ -4,16 +4,17 @@ import UserModel from "../model";
 export const claimQuestController = async (req, res) => {
   
   let { wallet, index } = req.body;
+  index -= 4;
   console.log(wallet, index);
-
+  
   try {
     const existingUser = await UserModel.findOne({ wallet });
     const maxQuests = [1, 7, 1, 5];
 
     if (
       existingUser &&
-      existingUser.achievedQuests.questify[index-4] === maxQuests[index-4] &&
-      existingUser.claimedQuests.questify[index-4] === 0
+      existingUser.achievedQuests.questify[index] === maxQuests[index] &&
+      existingUser.claimedQuests.questify[index] === 0
     ) {
       switch (index-4) {
         case 0:
@@ -33,7 +34,7 @@ export const claimQuestController = async (req, res) => {
           break;
       }
 
-      existingUser.claimedQuests.questify[index-4] = 1;
+      existingUser.claimedQuests.questify[index] = 1;
       await existingUser.save();
 
       return successResponse({

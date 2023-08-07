@@ -3,7 +3,7 @@ import UserModel from "../../User/model";
 
 export const claimQuestController = async (req, res) => {
   let { wallet, index } = req.body;
-  index -= 4;
+  index -= 8;
   console.log(wallet, index);
 
   try {
