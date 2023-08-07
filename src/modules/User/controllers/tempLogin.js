@@ -3,7 +3,6 @@ import UserModel from "../model";
 
 export const tempLoginController = async (req, res) => {
   let { wallet } = req.body;
-  console.log("💖father")
   if (wallet === "template") {
     console.log("User should connect wallet!");
     return successResponse({ res, response: { success: true } });
@@ -11,10 +10,9 @@ export const tempLoginController = async (req, res) => {
 
   try {
     const existingUser = await UserModel.findOne({ wallet });
-    existingUser.achievedQuests.questify[0] = 1;
     
-
     if (existingUser) {
+      existingUser.achievedQuests.questify[0] = 1;
       const today = new Date().setHours(0, 0, 0, 0);
       const lastActivityDate = existingUser.lastActivityDate;
       
