@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 const userSchema = new Schema(
   {
-    wallet: { type: String, key: true, required: true, default: "" },
-    email: { type: String, default: "" },
+    wallet: { type: String, key: true, default: "" },
+    email: { type: String, key: true, required: true, default: "" },
     gamerId: { type: String, default: "" },
     totalBalance: { type: Number, required: true, default: 0 },
     totalScore: { type: Number, required: true, default: 0 },
@@ -34,6 +34,8 @@ const userSchema = new Schema(
     },
     lastActivityDate: Date,
     lastTetrisDate: Date,
+    accessToken: {type: String, default: "" },
+    paidMatchState: {type: Number, required: true, default: 0}
 
     // lastScore: { type: Number, require: true, default: 0 },
     // tetris: {

@@ -2,7 +2,7 @@ import { errorResponse, successResponse } from "../../../utils";
 import UserModel from "../model";
 
 export const tempLoginController = async (req, res) => {
-  let { wallet } = req.body;
+  let { wallet, email } = req.body;
   if (wallet === "template") {
     console.log("User should connect wallet!");
     return successResponse({ res, response: { success: true } });
@@ -40,16 +40,15 @@ export const tempLoginController = async (req, res) => {
         response: { data: existingUser },
       });
     } else {
-      const newUser = new UserModel({
-        wallet,
-        achievedQuests: { questify: [1, 1, 0, 0] },
-      });
-      existingUser.lastActivityDate = new Date().setHours(0, 0, 0, 0);
-      await newUser.save();
-      console.log(`Created new user with wallet ${wallet}`);
+      const user = await UserModel.findOne({ email });
+      await user.update({wallet, achievedQuests: { questify: [1, 1, 0, 0] }});
+
+      user.lastActivityDate = new Date().setHours(0, 0, 0, 0);
+      await user.save();
+      
       return successResponse({
         res,
-        response: { data: newUser },
+        response: { data: user },
       });
     }
   } catch (err) {
