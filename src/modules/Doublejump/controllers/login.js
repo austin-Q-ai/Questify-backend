@@ -10,7 +10,10 @@ export const loginController = async (req, res) => {
     
     let existingUser= await UserModel.findOne({accessToken});
     if(existingUser){
-      return successResponse({ res, response: { data: existingUser } });
+      return successResponse({
+        res,
+        response: { status: "ok", "message": "User successfully logged in!" },
+      });
     }else{
       return errorResponse({ res, 
         response: { status: "fail", "message": "Can't find the user with than access token!"}, });
