@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema(
   {
     wallet: { type: String, key: true, default: "" },
-    email: { type: String, key: true, required: true, default: "" },
+    email: { type: String, default: "" },
     gamerId: { type: String, default: "" },
     totalBalance: { type: Number, required: true, default: 0 },
     totalScore: { type: Number, required: true, default: 0 },
