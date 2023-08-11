@@ -16,14 +16,14 @@ export const payMatchFeeController = async (req, res) => {
           return successResponse({ res, response: { "wallet-balance": existingUser.totalBalance } });
         }
         else{
-          res.status(400).json({ message: "User's balance is not sufficient!" });
+          res.status(400).json({ message: "Insufficient balance!" });
         }
       }else{
         return successResponse({ res, response: { "wallet-balance": existingUser.totalBalance } });
       }
       
     }else{
-      res.status(400).json({ message: 'Insufficient balance!' });
+      res.status(400).json({ message: 'Inappropriate balance!' });
     }
     
 
