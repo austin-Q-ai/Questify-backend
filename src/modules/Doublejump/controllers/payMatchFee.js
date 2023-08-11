@@ -3,7 +3,7 @@ import UserModel from "../../User/model";
 
 export const payMatchFeeController = async (req, res) => {
   const wallet = req.body['wallet-address'];
-  const {fee}= req.body['fee'];
+  const fee= req.body['fee'];
 
   try {
     let existingUser= await UserModel.findOne({wallet});
