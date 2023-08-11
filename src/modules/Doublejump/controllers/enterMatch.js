@@ -27,6 +27,10 @@ export const enterMatchController = async (req, res) => {
 
   try {
     for( const player of players){
+        const user=await UserModel.findOne({ wallet: player["wallet-address"] });
+        if(user.paidMatchState===0) res.status(400).json({ message: "Can't enter the match!" });
+    }
+    for( const player of players){
         await UserModel.findOneAndUpdate({ wallet: player["wallet-address"] }, {paidMatchState: 0}, {
             new: true
         });
