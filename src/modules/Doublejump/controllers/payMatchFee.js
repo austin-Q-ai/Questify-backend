@@ -23,7 +23,7 @@ export const payMatchFeeController = async (req, res) => {
       }
       
     }else{
-      res.status(400).json({ message: 'Inappropriate fee!' });
+      res.status(400).json({ message: 'Insufficient balance!' });
     }
     
 
