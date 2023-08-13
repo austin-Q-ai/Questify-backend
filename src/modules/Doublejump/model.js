@@ -22,7 +22,7 @@ const DoublejumpSchema = new Schema(
       }
     ],
     matchId:{
-      type: String, key: true, required: true, default: ""
+      type: String, unique: true, required: true
     },
     playerSize: {
       type: Number,
