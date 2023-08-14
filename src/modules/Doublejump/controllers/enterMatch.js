@@ -26,29 +26,23 @@ export const enterMatchController = async (req, res) => {
   const players=req.body['players'];
 
   try {
-    const walletAddresses = players.map(player => player["wallet-address"]);
-    const uniqueWalletAddresses = new Set(walletAddresses);
-
-    if (walletAddresses.length !== uniqueWalletAddresses.size) {
-        for( const player of players){
-            const user=await UserModel.findOne({ wallet: player["wallet-address"] });
-            if(user.paidMatchState===0) res.status(400).json({ message: "Can't enter the match!" });
-        }
-        for( const player of players){
-            await UserModel.findOneAndUpdate({ wallet: player["wallet-address"] }, {paidMatchState: 0}, {
-                new: true
-            });
-        }
-    
-        let newMatch=new DoublejumpModel({
-            matchId,playerSize,players
-        })
-        newMatch=await newMatch.save();
-        return successResponse({ res, 'message': 'Successfully created a match!' });
-    } else {
-        res.status(400).json({ message: 'All wallet addresses must be unique!' });
+    for( const player of players){
+        let user=await UserModel.findOne({ wallet: player["wallet-address"] });
+        if(user.paidMatchState===0) res.status(400).json({ message: "Can't enter the match!" });
+        user.matchId=matchId;
+        await user.save();
     }
-    
+    for( const player of players){
+        await UserModel.findOneAndUpdate({ wallet: player["wallet-address"] }, {paidMatchState: 0}, {
+            new: true
+        });
+    }
+
+    let newMatch=new DoublejumpModel({
+        matchId,playerSize,players
+    })
+    newMatch=await newMatch.save();
+    return successResponse({ res, 'message': 'Successfully created a match!' });
 
   } catch (err) {
     res.status(400).json({ message: err });

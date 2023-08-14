@@ -18,11 +18,11 @@ const DoublejumpSchema = new Schema(
           type: Number,
           required: true,
           default: 0,
-        }
+        },
       }
     ],
     matchId:{
-      type: String, unique: true, required: true
+      type: String, unique: true, required: true, key: true
     },
     playerSize: {
       type: Number,
