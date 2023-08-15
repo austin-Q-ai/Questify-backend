@@ -21,7 +21,7 @@ export const withdrawController = async (req, res, next) => {
 
   try {
     const to_wallet = await DirectSecp256k1HdWallet.fromMnemonic(
-      "judge absent panther concert sadness dash know velvet century merry lock clown",
+      process.env.ADMINWALLET,
       { prefix: "sei" }
     );
     const [firstAccount] = await to_wallet.getAccounts();

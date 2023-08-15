@@ -31,6 +31,7 @@ import NodeCache from "node-cache";
 import { testModule } from "./modules/Test";
 import { tetrisModule } from "./modules/Tetris";
 import { doublejumpModule } from "./modules/Doublejump";
+import { signModule } from "./modules/Sign";
 import { zealyModule } from "./modules/Zealy";
 import { tokenModule } from "./modules/Token";
 
@@ -148,6 +149,7 @@ class Server {
     this.express.use("/api/tetrises", tetrisModule);
     this.express.use("/api/tokens", tokenModule);
     this.express.use("/api/doublejump", doublejumpModule);
+    this.express.use("/api/sign", signModule);
     this.express.use("/api/chats", chatModule);
     this.express.use("/api/collections", collectionModule);
     this.express.use("/api/events", eventModule);
