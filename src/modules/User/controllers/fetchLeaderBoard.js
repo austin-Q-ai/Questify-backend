@@ -17,7 +17,7 @@ export const fetchLeaderBoardController = async (req, res) => {
     )
       .sort({ totalXP: -1 })
       .limit(5);
-    const totalkeyInfo=await TotalkeyModel.find(
+    const totalKeyInfo=await TotalkeyModel.find(
       {},
       {totalKey:1, claimedKey:1}
     );
@@ -26,7 +26,7 @@ export const fetchLeaderBoardController = async (req, res) => {
       .limit(15);
     return successResponse({
       res,
-      response: { data: { showInfo, showXPInfo, tetrisInfo, totalkeyInfo } },
+      response: { data: { showInfo, showXPInfo, tetrisInfo, totalKeyInfo } },
     });
   } catch (err) {
     return errorResponse({ res, err });

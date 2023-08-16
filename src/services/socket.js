@@ -529,7 +529,7 @@ export const socketService = (io) => {
         )
           .sort({ totalScore: -1 })
           .limit(5);
-        const totalkeyInfo=await TotalkeyModel.find(
+        const totalKeyInfo=await TotalkeyModel.find(
           {},
           {totalKey:1, claimedKey:1}
         );
@@ -537,7 +537,7 @@ export const socketService = (io) => {
           .sort({ updatedAt: -1 })
           .limit(15);
         io.sockets.emit(ACTIONS.SEND_LEADERBOARD, {
-          result: { showInfo, tetrisInfo, totalkeyInfo },
+          result: { showInfo, tetrisInfo, totalKeyInfo },
         });
       } catch (err) {
         console.log("tetris", err);
