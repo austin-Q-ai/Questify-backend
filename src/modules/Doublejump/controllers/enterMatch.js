@@ -27,7 +27,7 @@ export const enterMatchController = async (req, res) => {
 
   try {
     const existingMatch=await DoublejumpModel.findOne({matchId});
-    if(!existingMatch){
+    if(existingMatch){
         res.status(400).json({ message: 'Match with same Id already existed!' });
     }
     for( const player of players){
