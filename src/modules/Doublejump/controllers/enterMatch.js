@@ -37,6 +37,11 @@ export const enterMatchController = async (req, res) => {
         await user.save();
     }
     for( const player of players){
+        let user=await UserModel.findOne({ wallet: player["wallet-address"] });
+        user.matchId=matchId;
+        await user.save();
+    }
+    for( const player of players){
         await UserModel.findOneAndUpdate({ wallet: player["wallet-address"] }, {paidMatchState: 0}, {
             new: true
         });
