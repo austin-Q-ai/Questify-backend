@@ -524,7 +524,7 @@ export const socketService = (io) => {
 
         const showInfo = await UserModel.find(
           {},
-          { wallet: 1, totalScore: 1, totalXP: 1, totalStar:1 }
+          { wallet: 1, totalScore: 1, totalXP: 1, totalStar:1, rewardKey:1 }
         )
           .sort({ totalScore: -1 })
           .limit(5);
@@ -674,7 +674,7 @@ export const socketService = (io) => {
 
         const showInfo = await UserModel.find(
           {},
-          { wallet: 1, totalScore: 1, totalXP: 1, totalStar:1}
+          { wallet: 1, totalScore: 1, totalXP: 1, totalStar:1, rewardKey:1}
         )
           .sort({ totalScore: -1 })
           .limit(5);
