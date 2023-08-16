@@ -26,6 +26,10 @@ export const enterMatchController = async (req, res) => {
   const players=req.body['players'];
 
   try {
+    const existingMatch=await DoublejumpModel.findOne({matchId});
+    if(!existingMatch){
+        res.status(400).json({ message: 'Match with same Id already existed!' });
+    }
     for( const player of players){
         let user=await UserModel.findOne({ wallet: player["wallet-address"] });
         if(user.paidMatchState===0) res.status(400).json({ message: "Can't enter the match!" });
