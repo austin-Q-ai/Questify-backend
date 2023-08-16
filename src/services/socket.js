@@ -5,7 +5,7 @@ import chatService from "./chat";
 import groupService from "./group";
 import UserModel from "../modules/User/model";
 import TetrisModel from "../modules/Tetris/model";
-import TotalkeyModel from "../../Totalkey/model";
+import TotalkeyModel from "../modules/Totalkey/model";
 import ChatModel from "../modules/Chat/model";
 import chat from "./chat";
 
