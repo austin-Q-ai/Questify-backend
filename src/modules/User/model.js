@@ -63,6 +63,9 @@ const userSchema = new Schema(
     playCount: {
       tetris: { type: Number, required: true, default: 0 },
     },
+    rewardKey: {
+      type: Array, required: true, default: [0, 0, 0],
+    },
     lastActivityDate: Date,
     lastTetrisDate: Date,
     accessToken: {type: String, default: "" },
