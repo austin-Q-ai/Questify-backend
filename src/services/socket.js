@@ -5,6 +5,7 @@ import chatService from "./chat";
 import groupService from "./group";
 import UserModel from "../modules/User/model";
 import TetrisModel from "../modules/Tetris/model";
+import TotalkeyModel from "../../Totalkey/model";
 import ChatModel from "../modules/Chat/model";
 import chat from "./chat";
 
@@ -528,11 +529,15 @@ export const socketService = (io) => {
         )
           .sort({ totalScore: -1 })
           .limit(5);
+        const totalkeyInfo=await TotalkeyModel.find(
+          {},
+          {totalKey:1, claimedKey:1}
+        );
         const tetrisInfo = await TetrisModel.find({})
           .sort({ updatedAt: -1 })
           .limit(15);
         io.sockets.emit(ACTIONS.SEND_LEADERBOARD, {
-          result: { showInfo, tetrisInfo },
+          result: { showInfo, tetrisInfo, totalkeyInfo },
         });
       } catch (err) {
         console.log("tetris", err);
@@ -696,7 +701,7 @@ export const socketService = (io) => {
           .sort({ updatedAt: -1 })
           .limit(15);
         io.sockets.emit(ACTIONS.SEND_LEADERBOARD, {
-          result: { showInfo, tetrisInfo },
+          result: { showInfo, tetrisInfo, totalkeyInfo },
         });
       } catch (err) {
         console.log("tetris", err);

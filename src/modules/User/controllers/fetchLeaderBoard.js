@@ -1,5 +1,6 @@
 import { errorResponse, successResponse } from "../../../utils";
 import UserModel from "../model";
+import TotalkeyModel from "../../Totalkey/model";
 import TetrisModel from "../../Tetris/model";
 
 export const fetchLeaderBoardController = async (req, res) => {
@@ -16,12 +17,16 @@ export const fetchLeaderBoardController = async (req, res) => {
     )
       .sort({ totalXP: -1 })
       .limit(5);
+    const totalkeyInfo=await TotalkeyModel.find(
+      {},
+      {totalKey:1, claimedKey:1}
+    );
     const tetrisInfo = await TetrisModel.find({})
       .sort({ updatedAt: -1 })
       .limit(15);
     return successResponse({
       res,
-      response: { data: { showInfo, showXPInfo, tetrisInfo } },
+      response: { data: { showInfo, showXPInfo, tetrisInfo, totalkeyInfo } },
     });
   } catch (err) {
     return errorResponse({ res, err });
