@@ -1,4 +1,3 @@
-import { errorResponse, successResponse } from "../../../utils";
 import UserModel from "../../User/model";
 import DoublejumpModel from "../model";
 
@@ -514,8 +513,7 @@ export const claimMatchRewardsController = async (req, res) => {
             default:
                 break;
         }
-            
-        return successResponse({ res, matchResult });
+        res.status(200).json({ matchResult });
     
     
   } catch (err) {

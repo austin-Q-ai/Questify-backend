@@ -13,13 +13,13 @@ export const payMatchFeeController = async (req, res) => {
           existingUser.totalBalance=existingUser.totalBalance-1;
           existingUser.paidMatchState=existingUser.paidMatchState+1;
           existingUser=await existingUser.save();
-          return successResponse({ res, response: { "wallet-balance": existingUser.totalBalance } });
+          return successResponse({ res, response: { status: "ok","wallet-balance": existingUser.totalBalance } });
         }
         else{
           res.status(400).json({ message: "Insufficient balance!" });
         }
       }else{
-        return successResponse({ res, response: { "wallet-balance": existingUser.totalBalance } });
+        return successResponse({ res, response: { status: "ok","wallet-balance": existingUser.totalBalance } });
       }
       
     }else{

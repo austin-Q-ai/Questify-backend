@@ -1,4 +1,3 @@
-import { errorResponse, successResponse } from "../../../utils";
 import UserModel from "../../User/model";
 import DoublejumpModel from "../model";
 
@@ -49,7 +48,7 @@ export const enterMatchController = async (req, res) => {
         matchId,playerSize,players
     })
     newMatch=await newMatch.save();
-    return successResponse({ res, 'message': 'Successfully created a match!' });
+    res.status(200).json({ message: 'Successfully created a match!' });
 
   } catch (err) {
     res.status(400).json({ message: err });
