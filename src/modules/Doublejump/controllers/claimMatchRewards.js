@@ -38,14 +38,16 @@ export const claimMatchRewardsController = async (req, res) => {
         
         // Find missing wallet addresses
         const missingAddresses = firstAddresses.filter(address => !secondAddresses.includes(address));
+        console.log(missingAddresses)
         for( const address of missingAddresses){
-            matchResult.push({'wallet-address': address, 'rewarded': false, 'error-code': 3});
+            if(address) matchResult.push({'wallet-address': address, 'rewarded': false, 'error-code': 3});
+            
         }
-
+        console.log(matchResult)
         
         const overlappingWallets = findDuplicateWallets(playerResults);
         for( const address of overlappingWallets){
-            matchResult.push({'wallet-address': address, 'rewarded': false, 'error-code': 2});
+            if(address) matchResult.push({'wallet-address': address, 'rewarded': false, 'error-code': 2});
         }
         
         for( const player of playerResults){
