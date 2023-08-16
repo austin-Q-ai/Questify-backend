@@ -9,15 +9,15 @@ const userSchema = new Schema(
       type:String,
       trim:true,
       lowercase:true,
-      validate: {
-          validator: function(value) {
-              // Add your validation logic here
-              // You can use regular expressions or any other method to validate the email
-              // For example, using a regular expression to validate email format
-              return /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(value);
-          },
-          message: 'Invalid email format'
-      }
+      // validate: {
+      //     validator: function(value) {
+      //         // Add your validation logic here
+      //         // You can use regular expressions or any other method to validate the email
+      //         // For example, using a regular expression to validate email format
+      //         return /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(value);
+      //     },
+      //     message: 'Invalid email format'
+      // }
     },
     password:{
       type:String,
