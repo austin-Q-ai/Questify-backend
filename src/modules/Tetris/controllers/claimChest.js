@@ -10,7 +10,7 @@ export const claimChestController = async (req, res) => {
     if (existingUser && existingUser.playCount.tetris === 4) {
       const boost = Math.floor(Math.random() * 10 + 1) / 100;
       existingUser.playCount.tetris = 0;
-      existingUser.totalBalance += boost;
+      // existingUser.totalBalance += boost;
       await existingUser.save();
 
       return successResponse({

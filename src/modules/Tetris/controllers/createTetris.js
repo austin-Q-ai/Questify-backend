@@ -6,7 +6,9 @@ import UserModel from "../../User/model";
 export const createTetrisController = async (req, res) => {
   const { wallet, txHash, amount, level } = req.body;
   console.log(wallet);
-
+  if(amount<0){
+    return errorResponse({ res, err: "Hacking Attempt Occured!" });
+  }
   try {
     const user = await UserModel.findOne({ wallet });
 

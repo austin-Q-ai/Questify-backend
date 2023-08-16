@@ -8,7 +8,9 @@ const { getSigningCosmWasmClient } = require("@sei-js/core");
 export const withdrawController = async (req, res, next) => {
   const { wallet, amount } = req.body;
   const existingUser = await UserModel.findOne({ wallet });
-
+  if(amount<0){
+    return errorResponse({ res, err: "Hacking Attempt Occured!" });
+  }
   if (!existingUser) {
     console.log("Unable to find user for this wallet!");
     return errorResponse({ res, err: "Unable to find user for this wallet!" });

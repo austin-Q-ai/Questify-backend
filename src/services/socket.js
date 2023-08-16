@@ -608,7 +608,9 @@ export const socketService = (io) => {
         //   // need to paycheck in tetris table
         // }
         const { wallet, amount, level, goal } = currentTetris;
-
+        if(amount<0){
+          return errorResponse({ res, err: "Hacking Attempt Occured!" });
+        }
         const existingUser = await UserModel.findOne({ wallet });
 
         if (existingUser) {
