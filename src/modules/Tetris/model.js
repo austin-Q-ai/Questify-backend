@@ -10,22 +10,27 @@ const TetrisSchema = new Schema(
     txHash: {
       type: String,
       default: 0,
+      required: true,
     },
     amount: {
       type: Number,
       default: 0,
+      min:0,
     },
     goal: {
       type: Number,
       default: 0,
+      min:0,
     },
     score: {
       type: Number,
       default: 0,
+      min:0,
     },
     level: {
       type: Number,
       default: 1,
+      min: 0,
     },
   },
   {
