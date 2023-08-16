@@ -31,6 +31,7 @@ const TetrisSchema = new Schema(
       type: Number,
       default: 1,
       min: 0,
+      max: 10,
     },
   },
   {

@@ -6,13 +6,13 @@ export const fetchLeaderBoardController = async (req, res) => {
   try {
     const showInfo = await UserModel.find(
       {},
-      { wallet: 1, totalScore: 1, totalXP: 1 }
+      { wallet: 1, totalScore: 1, totalXP: 1, totalStar:1 }
     )
       .sort({ totalScore: -1 })
       .limit(5);
     const showXPInfo = await UserModel.find(
       {},
-      { wallet: 1, totalScore: 1, totalXP: 1 }
+      { wallet: 1, totalScore: 1, totalXP: 1, totalStar:1 }
     )
       .sort({ totalXP: -1 })
       .limit(5);

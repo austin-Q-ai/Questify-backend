@@ -17,25 +17,25 @@ export const claimQuestController = async (req, res) => {
     ) {
       switch (index) {
         case 0:
-          existingUser.totalXP += 20;
+          existingUser.totalStar += 20;
           break;
         case 1:
-          existingUser.totalXP += 100;
+          existingUser.totalStar += 100;
           break;
         case 2:
-          existingUser.totalXP += 100;
+          existingUser.totalStar += 100;
           break;
         case 3:
-          existingUser.totalXP += 50;
+          existingUser.totalStar += 50;
           break;
         case 4:
-          existingUser.totalXP += 50;
+          existingUser.totalStar += 50;
           break;
         case 5:
-          existingUser.totalXP += 50;
+          existingUser.totalStar += 50;
           break;
         case 6:
-          existingUser.totalXP += 50;
+          existingUser.totalStar += 50;
           break;
         default:
           console.log("error in index");
