@@ -19,7 +19,7 @@ export const fetchLeaderBoardController = async (req, res) => {
       .limit(5);
     const totalKeyInfo=await TotalkeyModel.find(
       {},
-      {totalKey:1, claimedKey:1}
+      {totalKey:1, claimedKey:1, totalRewards:1, claimedRewards:1}
     ).limit(1);
     const tetrisInfo = await TetrisModel.find({})
       .sort({ updatedAt: -1 })
