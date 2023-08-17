@@ -532,7 +532,7 @@ export const socketService = (io) => {
         const totalKeyInfo=await TotalkeyModel.find(
           {},
           {totalKey:1, claimedKey:1}
-        );
+        ).limit(1);
         const tetrisInfo = await TetrisModel.find({})
           .sort({ updatedAt: -1 })
           .limit(15);
