@@ -15,6 +15,8 @@ export const claimedRewardsController = async (req, res) => {
     if(existingUser.rewardKey[keyID]<1) return errorResponse({ res, message:'The amount of key is not enough!' });
     existingUser.rewardKey[keyID]-=1;
     existingUser.claimedRewards[rewardID]+=rewardAmount;
+    if(rewardID===1) existingUser.totalStar+=rewardAmount;
+    if(rewardID===5) existingUser.totalBalance+=rewardAmount;
     // if(totalKeyInfo['claimedKey'][keyID]+1>totalKeyInfo['totalKey'][keyID]) return errorResponse({ res, message:'The amount of Key is not enough!' });
     // totalKeyInfo['claimedKey'][keyID]+=1;
     if(totalKeyInfo['claimedRewards'][rewardID]+rewardAmount>totalKeyInfo['totalRewards'][rewardID]) return errorResponse({ res, message:'The amount of Rewards is not enough!' });
