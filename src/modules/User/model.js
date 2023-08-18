@@ -67,7 +67,8 @@ const userSchema = new Schema(
     lastActivityDate: Date,
     lastTetrisDate: Date,
     accessToken: {type: String, default: "" },
-    paidMatchState: {type: Number, required: true, default: 0}
+    paidMatchState: {type: Number, required: true, default: 0},
+    paidMatches:{type: Number, required: true, default: 0}
 
     // lastScore: { type: Number, require: true, default: 0 },
     // tetris: {

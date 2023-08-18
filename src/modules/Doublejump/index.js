@@ -86,7 +86,7 @@ class DoublejumpModule extends RouteModule {
   publicRoutes() {
     this.router.get("/login", loginController);
     this.router.post("/v1/loginWithEmail", checkHeaders, loginWithEmailController);
-    this.router.post("/v1/walletInfo", checkHeaders, checkAccessToken, walletInfoController);
+    this.router.post("/v1/userInfo", checkHeaders, checkAccessToken, walletInfoController);
     this.router.post("/v1/payMatchFee", checkHeaders, checkAccessToken, payMatchFeeController);
     this.router.post("/v1/enterMatch", checkHeaders, enterMatchController);
     this.router.post("/v1/claimMatchRewards", checkHeaders, claimMatchRewardsController);
