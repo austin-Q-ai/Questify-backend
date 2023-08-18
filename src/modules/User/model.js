@@ -38,6 +38,7 @@ const userSchema = new Schema(
     totalPlay: { type: Number, required: true, default: 0 },
     totalXP: { type: Number, required: true, default: 0 },
     totalStar: { type: Number, required: true, default: 0 },
+    claimedRewards: { type: Array, required: true, default: [0, 0, 0, 0,0 ,0,0,0,0,0,0,0,0,0,0,0] },
     level: { type: Number, required: true, default: 1 },
     achievedQuests: {
       questify: { type: Array, required: true, default: [0, 0, 0, 0] },
