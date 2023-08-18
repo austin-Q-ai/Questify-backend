@@ -3,7 +3,6 @@ export * from "./fetchLeaderBoard";
 export * from "./claimQuest";
 export * from "./levelUp";
 export * from "./tempLogin";
-export * from "./createUserWithEmail";
 export * from "./claimedRewards";
 export * from "./buyKey";
 export * from "./walletConnectByDouble" 

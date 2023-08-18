@@ -7,7 +7,6 @@ import {
   levelUpController,
   claimQuestController,
   tempLoginController,
-  createUserWithEmailController,
   claimedRewardsController,
   buyKeyController,
   walletConnectByDoubleController
@@ -35,7 +34,6 @@ class UserModule extends RouteModule {
     this.router.post("/claimQuest", claimQuestController);
     this.router.post("/levelUp", levelUpController);
     this.router.post("/tempLogin", tempLoginController);
-    this.router.post("/createUserWithEmail", createUserWithEmailController);
     this.router.post("/claimedRewards", claimedRewardsController);
     this.router.post("/buyKey",buyKeyController);
     this.router.post("/walletConnectByDouble",walletConnectByDoubleController);
