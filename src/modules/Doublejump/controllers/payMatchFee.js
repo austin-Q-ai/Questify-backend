@@ -2,11 +2,11 @@ import { successResponse } from "../../../utils";
 import UserModel from "../../User/model";
 
 export const payMatchFeeController = async (req, res) => {
-  const wallet = req.body['wallet-address'];
+  const email = req.body['email'];
   const fee= req.body['fee'];
 
   try {
-    let existingUser= await UserModel.findOne({wallet});
+    let existingUser= await UserModel.findOne({email});
     if(fee===1){
       if(existingUser.paidMatchState===0){
         if(existingUser.totalBalance>=1){

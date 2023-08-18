@@ -4,8 +4,14 @@ import UserModel from "../model";
 
 export const walletConnectByDoubleController = async (req, res) => {
   const { wallet, accessTokenByEmail } = req.body;
-  if(!accessTokenByEmail) return successResponse({ res, response: { } });
+  
   try {
+    if(!accessTokenByEmail){
+        let existingUser=await UserModel.findOne({wallet});
+        existingUser.accessToken=jwt.sign({ wallet }, process.env.SESSION_SECRET);
+        await existingUser.save();
+        return successResponse({ res, response: { } });
+    } 
     const decodedToken = jwt.verify(accessTokenByEmail, process.env.SESSION_SECRET);
     if(!decodedToken.email) res.status(400).json({ message: 'Access token by email address is invalid!' });
     let existingUser=await UserModel.findOne({email: decodedToken.email})

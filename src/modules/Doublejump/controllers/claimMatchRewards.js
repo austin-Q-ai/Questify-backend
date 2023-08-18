@@ -23,8 +23,28 @@ const findDuplicateWallets = (playerResults) => {
   
 export const claimMatchRewardsController = async (req, res) => {
   const matchId=req.body['match-id'];
-  const playerResults=req.body['player-results'];
-  
+  const originalPlayerResults=req.body['player-results'];
+  let playerResults = [];
+
+  for (const result of originalPlayerResults) {
+    const { email, rank, points } = result;
+
+    // Search UserModel by email to get the wallet-address
+    const user = await UserModel.findOne({ email });
+
+    if (user) {
+      const { walletAddress } = user;
+
+      // Create a new dictionary with wallet-address
+      const playerResult = {
+        "wallet-address": walletAddress,
+        rank,
+        points
+      };
+
+      playerResults.push(playerResult);
+    }
+  }
 
   try {
 
