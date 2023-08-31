@@ -316,6 +316,18 @@ const userSchema = new Schema(
     toJSON: { getters: true },
   }
 );
+userSchema.pre("save", function (next) {
+  if (this.achievedQuests.questify.every((val) => val === 1)) {
+    this.achievedQuests.lootbox[0] = 1;
+  }
+  if (this.achievedQuests.tetris.every((val) => val === 1)) {
+    this.achievedQuests.lootbox[1] = 1;
+  }
+  if (this.achievedQuests.doublejump.every((val) => val === 1)) {
+    this.achievedQuests.lootbox[2] = 1;
+  }
+  next();
+});
 const UserModel = mongoose.model("users", userSchema);
 
 export default UserModel;
