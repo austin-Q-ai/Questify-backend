@@ -63,6 +63,8 @@ const userSchema = new Schema(
     },
     claimedQuests: {
       questify: { type: Array, required: true, default: [0, 0, 0, 0] },
+      doublejump: { type: Array, required: true, default: [0, 0, 0, 0] },
+      lootbox: { type: Array, required: true, default: [0, 0, 0] },
       community: { type: Array, required: true, default: [0, 0, 0, 0] },
       tetris: {
         type: Array,
