@@ -525,13 +525,13 @@ export const socketService = (io) => {
 
         const showInfo = await UserModel.find(
           {},
-          { wallet: 1, totalScore: 1, totalXP: 1, totalStar:1, rewardKey:1 }
+          { wallet: 1, totalScore: 1, totalXP: 1, totalStar: 1, rewardKey: 1 }
         )
           .sort({ totalScore: -1 })
           .limit(5);
-        const totalKeyInfo=await TotalkeyModel.find(
+        const totalKeyInfo = await TotalkeyModel.find(
           {},
-          {totalKey:1, claimedKey:1, totalRewards:1, claimedRewards: 1}
+          { totalKey: 1, claimedKey: 1, totalRewards: 1, claimedRewards: 1 }
         ).limit(1);
         const tetrisInfo = await TetrisModel.find({})
           .sort({ updatedAt: -1 })
@@ -613,7 +613,7 @@ export const socketService = (io) => {
         //   // need to paycheck in tetris table
         // }
         const { wallet, amount, level, goal } = currentTetris;
-        if(amount<0){
+        if (amount < 0) {
           return errorResponse({ res, err: "Hacking Attempt Occured!" });
         }
         const existingUser = await UserModel.findOne({ wallet });
@@ -623,7 +623,7 @@ export const socketService = (io) => {
           // Update the total score for the existing user
           existingUser.totalScore += gameScore;
           existingUser.totalPlay += 1;
-          existingUser.totalXP += Math.floor(gameScore / 2000) * level;
+          existingUser.totalXP += Math.floor(gameScore / 5000);
 
           existingUser.playCount.tetris +=
             existingUser.playCount.tetris === 4 ? 0 : 1;
@@ -679,7 +679,7 @@ export const socketService = (io) => {
 
         const showInfo = await UserModel.find(
           {},
-          { wallet: 1, totalScore: 1, totalXP: 1, totalStar:1, rewardKey:1}
+          { wallet: 1, totalScore: 1, totalXP: 1, totalStar: 1, rewardKey: 1 }
         )
           .sort({ totalScore: -1 })
           .limit(5);
