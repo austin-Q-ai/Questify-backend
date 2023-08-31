@@ -41,7 +41,23 @@ import { getTwitterApi } from "./helpers";
 import { socketService } from "./services/socket";
 import { clusterApiUrl, Connection } from "@solana/web3.js";
 import CronManager from "./cronManager";
+import UserModel from "./modules/User/model";
 
+async function updateLevels() {
+  const cursor = await UserModel.find({}).cursor();
+  for (
+    let user = await cursor.next();
+    user != null;
+    user = await cursor.next()
+  ) {
+    console.log(user.level);
+    user.level = Math.floor(user.totalXP / 500) + 1;
+    if (user.level > 5) user.level = 5;
+    await user.save();
+  }
+
+  console.log("All user levels updated");
+}
 class Server {
   constructor({ port }) {
     this.express = express();
@@ -89,6 +105,9 @@ class Server {
       // .TetrisModel.find({})
       .then((doc) => {
         console.log("> Successfully Connected to DB!");
+        updateLevels().then(() => {
+          console.log("hahah");
+        });
       })
       .catch((err) => console.log("ERROR: ", err));
     const db = mongoose.connection;
