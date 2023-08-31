@@ -3,13 +3,14 @@ import { getUserSchema, getUsersSchema, getEventsSchema } from "./schema";
 
 import {
   fetchLeaderBoardController,
+  compassUnlockController,
   getUserInfoController,
   levelUpController,
   claimQuestController,
   tempLoginController,
   claimedRewardsController,
   buyKeyController,
-  walletConnectByDoubleController
+  walletConnectByDoubleController,
   // getAllUsersController,
   // getUserWithWalletAddressController,
   // getUserFollowersController,
@@ -30,13 +31,14 @@ import {
 class UserModule extends RouteModule {
   publicRoutes() {
     this.router.get("/fetchLeaderBoard", fetchLeaderBoardController);
+    this.router.post("/compassUnlock", compassUnlockController);
     this.router.post("/getMyInfo", getUserInfoController);
     this.router.post("/claimQuest", claimQuestController);
     this.router.post("/levelUp", levelUpController);
     this.router.post("/tempLogin", tempLoginController);
     this.router.post("/claimedRewards", claimedRewardsController);
-    this.router.post("/buyKey",buyKeyController);
-    this.router.post("/walletConnectByDouble",walletConnectByDoubleController);
+    this.router.post("/buyKey", buyKeyController);
+    this.router.post("/walletConnectByDouble", walletConnectByDoubleController);
     // // get all users on the system
     // this.router.get(
     //   "/",

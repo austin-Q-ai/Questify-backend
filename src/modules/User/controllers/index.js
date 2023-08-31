@@ -5,7 +5,8 @@ export * from "./levelUp";
 export * from "./tempLogin";
 export * from "./claimedRewards";
 export * from "./buyKey";
-export * from "./walletConnectByDouble" 
+export * from "./walletConnectByDouble";
+export * from "./compassUnlock";
 // export * from "./getUsers";
 // export * from "./getAllUsers";
 // export * from "./getUser";
