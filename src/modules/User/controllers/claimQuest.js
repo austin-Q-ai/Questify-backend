@@ -3,8 +3,6 @@ import UserModel from "../model";
 
 export const claimQuestController = async (req, res) => {
   let { wallet, index } = req.body;
-  // index -= 4;
-  console.log(wallet, index);
 
   try {
     const existingUser = await UserModel.findOne({ wallet });
