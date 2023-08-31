@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { boolean } from "yup";
-
+import TotalkeyModel from "../Totalkey/model";
 const Schema = mongoose.Schema;
 const userSchema = new Schema(
   {
@@ -316,16 +316,65 @@ const userSchema = new Schema(
     toJSON: { getters: true },
   }
 );
-userSchema.pre("save", function (next) {
-  if (this.claimedQuests.questify.every((val) => val === 1)) {
-    this.achievedQuests.lootbox[0] = 1;
+userSchema.pre("save", async function (next) {
+  let totalKeyInfo = await TotalkeyModel.findById("64de2e6fde6b0f7dcbbf2ece");
+  if (this.isModified("claimedQuests")) {
+    if (this.claimedQuests.questify.every((val) => val === 1)) {
+      this.achievedQuests.lootbox[0] = 1;
+    }
+    if (this.claimedQuests.tetris.every((val) => val === 1)) {
+      this.achievedQuests.lootbox[1] = 1;
+    }
+    if (this.claimedQuests.doublejump.every((val) => val === 1)) {
+      this.achievedQuests.lootbox[2] = 1;
+    }
   }
-  if (this.claimedQuests.tetris.every((val) => val === 1)) {
-    this.achievedQuests.lootbox[1] = 1;
+  if (this.isModified("level")) {
+    if (this.level === 1) {
+      this.totalStar += 100;
+
+      totalKeyInfo.claimedRewards[1] += 100;
+    }
+    if (this.level === 2) {
+      this.claimedRewards[0] += 1000;
+      totalKeyInfo.claimedRewards[0] += 1000;
+    }
+    if (this.level === 3) {
+      this.totalStar += 150;
+      totalKeyInfo.claimedRewards[1] += 150;
+    }
+    if (this.level === 4) {
+      this.totalStar += 200;
+      totalKeyInfo.claimedRewards[1] += 200;
+    }
+    if (this.level === 5) {
+      this.rewardKey[0] += 1;
+      totalKeyInfo.claimedKey[0] += 1;
+    }
+    if (this.compass === true) {
+      if (this.level === 1) {
+        this.rewardKey[0] += 1;
+        totalKeyInfo.claimedKey[0] += 1;
+      }
+      if (this.level === 2) {
+        this.rewardKey[0] += 1;
+        totalKeyInfo.claimedKey[0] += 1;
+      }
+      if (this.level === 3) {
+        this.rewardKey[0] += 1;
+        totalKeyInfo.claimedKey[0] += 1;
+      }
+      if (this.level === 4) {
+        this.rewardKey[1] += 1;
+        totalKeyInfo.claimedKey[1] += 1;
+      }
+      if (this.level === 5) {
+        this.rewardKey[2] += 1;
+        totalKeyInfo.claimedKey[2] += 1;
+      }
+    }
   }
-  if (this.claimedQuests.doublejump.every((val) => val === 1)) {
-    this.achievedQuests.lootbox[2] = 1;
-  }
+
   next();
 });
 const UserModel = mongoose.model("users", userSchema);
