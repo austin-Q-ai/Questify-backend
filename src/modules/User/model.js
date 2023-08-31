@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { boolean } from "yup";
 
 const Schema = mongoose.Schema;
 const userSchema = new Schema(
@@ -42,6 +43,11 @@ const userSchema = new Schema(
       type: Array,
       required: true,
       default: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
+    compass: {
+      type: Boolean,
+      required: true,
+      default: false,
     },
     level: { type: Number, required: true, default: 1 },
     achievedQuests: {
