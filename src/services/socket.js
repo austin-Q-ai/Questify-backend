@@ -668,7 +668,7 @@ export const socketService = (io) => {
             totalBalance: gameScore >= goal ? 2 * amount : 0,
             totalScore: gameScore,
             totalPlay: 1,
-            totalXP: Math.floor(gameScore / 2000) * level,
+            totalXP: Math.floor(gameScore / 5000),
             achievedQuests: { tetris: [1, 1, 1, 0, 0, 0, 0] },
             playCount: { tetris: 1 },
           });

@@ -15,7 +15,7 @@ export const levelUpController = async (req, res) => {
       //     : Math.floor(Math.log2(existingUser.totalXP / 500)) + 2;
       let level = Math.floor(existingUser.totalXP / 500) + 1;
 
-      level = level > 10 ? 10 : level;
+      level = level > 5 ? 5 : level;
 
       const reward = 2 * (level - 1);
 
