@@ -105,9 +105,9 @@ class Server {
       // .TetrisModel.find({})
       .then((doc) => {
         console.log("> Successfully Connected to DB!");
-        updateLevels().then(() => {
-          console.log("hahah");
-        });
+        // updateLevels().then(() => {
+        //   console.log("hahah");
+        // });
       })
       .catch((err) => console.log("ERROR: ", err));
     const db = mongoose.connection;
