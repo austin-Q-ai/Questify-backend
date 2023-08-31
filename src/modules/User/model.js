@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema(
   {
     wallet: { type: String, key: true, default: "" },
-    email:{
-      unique:true,
-      type:String,
-      trim:true,
-      lowercase:true,
+    email: {
+      unique: true,
+      type: String,
+      trim: true,
+      lowercase: true,
       // validate: {
       //     validator: function(value) {
       //         // Add your validation logic here
@@ -19,17 +19,17 @@ const userSchema = new Schema(
       //     message: 'Invalid email format'
       // }
     },
-    password:{
-      type:String,
-      trim:true
+    password: {
+      type: String,
+      trim: true,
     },
-    isVerified:{
-      type:Boolean,
-      default:false
+    isVerified: {
+      type: Boolean,
+      default: false,
     },
-    createdAt:{
-        type:Date,
-        default:Date.now
+    createdAt: {
+      type: Date,
+      default: Date.now,
     },
     matchId: { type: String, default: "" },
     gamerId: { type: String, default: "" },
@@ -38,10 +38,16 @@ const userSchema = new Schema(
     totalPlay: { type: Number, required: true, default: 0 },
     totalXP: { type: Number, required: true, default: 0 },
     totalStar: { type: Number, required: true, default: 0 },
-    claimedRewards: { type: Array, required: true, default: [0, 0, 0, 0,0 ,0,0,0,0,0,0,0,0,0,0,0] },
+    claimedRewards: {
+      type: Array,
+      required: true,
+      default: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    },
     level: { type: Number, required: true, default: 1 },
     achievedQuests: {
       questify: { type: Array, required: true, default: [0, 0, 0, 0] },
+      doublejump: { type: Array, required: true, default: [0, 0, 0, 0] },
+      lootbox: { type: Array, required: true, default: [0, 0, 0] },
       community: { type: Array, required: true, default: [0, 0, 0, 0] },
       tetris: {
         type: Array,
@@ -62,13 +68,15 @@ const userSchema = new Schema(
       tetris: { type: Number, required: true, default: 0 },
     },
     rewardKey: {
-      type: Array, required: true, default: [0, 0, 0],
+      type: Array,
+      required: true,
+      default: [0, 0, 0],
     },
     lastActivityDate: Date,
     lastTetrisDate: Date,
-    accessToken: {type: String, default: "" },
-    paidMatchState: {type: Number, required: true, default: 0},
-    paidMatches:{type: Number, required: true, default: 0}
+    accessToken: { type: String, default: "" },
+    paidMatchState: { type: Number, required: true, default: 0 },
+    paidMatches: { type: Number, required: true, default: 0 },
 
     // lastScore: { type: Number, require: true, default: 0 },
     // tetris: {
