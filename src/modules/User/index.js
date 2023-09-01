@@ -11,6 +11,7 @@ import {
   claimedRewardsController,
   buyKeyController,
   walletConnectByDoubleController,
+  compassKeyRewardsController,
   // getAllUsersController,
   // getUserWithWalletAddressController,
   // getUserFollowersController,
@@ -37,6 +38,7 @@ class UserModule extends RouteModule {
     this.router.post("/levelUp", levelUpController);
     this.router.post("/tempLogin", tempLoginController);
     this.router.post("/claimedRewards", claimedRewardsController);
+    this.router.post("/compassKeyRewards", compassKeyRewardsController);
     this.router.post("/buyKey", buyKeyController);
     this.router.post("/walletConnectByDouble", walletConnectByDoubleController);
     // // get all users on the system

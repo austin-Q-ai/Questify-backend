@@ -7,6 +7,7 @@ export * from "./claimedRewards";
 export * from "./buyKey";
 export * from "./walletConnectByDouble";
 export * from "./compassUnlock";
+export * from "./compassKeyRewards";
 // export * from "./getUsers";
 // export * from "./getAllUsers";
 // export * from "./getUser";
