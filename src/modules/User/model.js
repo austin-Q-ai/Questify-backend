@@ -75,6 +75,11 @@ const userSchema = new Schema(
     playCount: {
       tetris: { type: Number, required: true, default: 0 },
     },
+    premiumKey: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
     rewardKey: {
       type: Array,
       required: true,
