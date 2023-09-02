@@ -16,7 +16,7 @@ export const fetchLeaderBoardController = async (req, res) => {
       { wallet: 1, totalScore: 1, totalXP: 1, totalStar: 1, rewardKey: 1 }
     )
       .sort({ totalXP: -1 })
-      .limit(5);
+      .limit(15);
     const totalKeyInfo = await TotalkeyModel.find(
       {},
       { totalKey: 1, claimedKey: 1, totalRewards: 1, claimedRewards: 1 }
