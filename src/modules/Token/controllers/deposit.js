@@ -17,9 +17,7 @@ export const depositController = async (req, res, next) => {
       return errorResponse({ res, err: "Double spending error!" });
     }
 
-    const queryClient = await getQueryClient(
-      "https://rest.atlantic-2.seinetwork.io/"
-    );
+    const queryClient = await getQueryClient("https://rest.sei-apis.com/");
     const result = await queryClient.cosmos.tx.v1beta1.getTx({ hash: txHash });
 
     const tx_log = result.tx_response.raw_log;
