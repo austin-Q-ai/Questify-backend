@@ -29,7 +29,6 @@ export const claimedRewardsController = async (req, res) => {
           message: "The amount of key is not enough!",
         });
       existingUser.rewardKey[keyID] -= 1;
-      existingUser.claimedRewards[rewardID] += rewardAmount;
     }
 
     if (rewardID === 1) existingUser.totalStar += rewardAmount;
@@ -45,7 +44,7 @@ export const claimedRewardsController = async (req, res) => {
         message: "The amount of Rewards is not enough!",
       });
     totalKeyInfo["claimedRewards"][rewardID] += rewardAmount;
-
+    existingUser.claimedRewards[rewardID] += rewardAmount;
     await existingUser.save();
     await totalKeyInfo.save();
 
