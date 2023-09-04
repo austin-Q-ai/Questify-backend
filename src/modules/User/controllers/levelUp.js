@@ -17,10 +17,10 @@ export const levelUpController = async (req, res) => {
 
       level = level > 5 ? 5 : level;
 
-      const reward = 2 * (level - 1);
+      // const reward = 2 * (level - 1);
 
       existingUser.level = level;
-      existingUser.totalBalance += reward;
+      // existingUser.totalBalance += reward;
 
       await existingUser.save();
 

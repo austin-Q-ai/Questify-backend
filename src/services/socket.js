@@ -653,7 +653,7 @@ export const socketService = (io) => {
           existingUser.achievedQuests.tetris[level + 2] = 1;
 
           if (gameScore >= goal) {
-            existingUser.totalBalance += 2 * amount;
+            existingUser.totalBalance += 1.5 * amount;
             existingUser.achievedQuests.tetris[6] = 1;
           }
 
